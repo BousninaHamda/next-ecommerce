@@ -25,7 +25,7 @@ export const Carousel = ({ products }: Props) => {
 
   return (
     <Card className="relative overflow-hidden rounded-lg shadow-md border-gray-300">
-      {currentProduct.images && currentProduct.images[0] && (
+      {currentProduct.images?.[0] && (
         <div className="relative h-80 w-full">
           <Image
             src={currentProduct.images[0]}
@@ -40,7 +40,7 @@ export const Carousel = ({ products }: Props) => {
         <CardTitle className="text-3xl font-bold text-white mb-2">
           {currentProduct.name}
         </CardTitle>
-        {price && price.unit_amount && (
+        {price?.unit_amount && (
           <p className="text-xl text-white">
             ${(price.unit_amount / 100).toFixed(2)}
           </p>

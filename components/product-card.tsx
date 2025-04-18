@@ -11,9 +11,9 @@ interface Props {
 export const ProductCard = ({ product }: Props) => {
   const price = product.default_price as Stripe.Price;
   return (
-    <Link href={'/products/1'} className="block h-full">
+    <Link href={`/products/${product.id}`} className="block h-full">
       <Card className="group hover:shadow-2xl transition duration-300 py-0 h-full flex flex-col border-gray-300 gap-0">
-        {product.images && product.images[0] && (
+        {product.images?.[0] && (
           <div className="relative h-60 w-full">
             <Image
               src={product.images[0]}
@@ -35,7 +35,7 @@ export const ProductCard = ({ product }: Props) => {
               {product.description}
             </p>
           )}
-          {price && price.unit_amount && (
+          {price?.unit_amount && (
             <p className="text-lg font-semibold text-black">
               ${(price.unit_amount / 100).toFixed(2)}
             </p>
